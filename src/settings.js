@@ -1,6 +1,5 @@
 module.exports = {
-
-  title: 'Vue Admin Template',
+  title: "seplaep-web",
 
   /**
    * @type {boolean} true | false
@@ -12,5 +11,5 @@ module.exports = {
    * @type {boolean} true | false
    * @description Whether show the logo in sidebar
    */
-  sidebarLogo: false
-}
+  sidebarLogo: false,
+};
