@@ -86,8 +86,8 @@ export default {
     };
     return {
       loginForm: {
-        username: "admin",
-        password: "111111",
+        username: "15771631956",
+        password: "ah",
       },
       // loginRules: {
       //   username: [
@@ -125,13 +125,21 @@ export default {
       // this.$refs.loginForm.validate(valid => {
       // if (valid) {
       this.loading = true;
+      console.log("outside/login/index:  111111111111111111111111111111111");
+
       this.$store
         .dispatch("user/login", this.loginForm)
         .then(() => {
+          // Message.warning("/login/index:  111111111111111111111111111111111");
+
+          console.error("/login/index:   111111111111111111111111");
+          console.log("inside/login/index:  111111111111111111111111");
           this.$router.push({ path: this.redirect || "/" });
           this.loading = false;
         })
         .catch(() => {
+          console.log("you be catched");
+          this.$router.push({ path: this.redirect || "/" });
           this.loading = false;
         });
       // } else {

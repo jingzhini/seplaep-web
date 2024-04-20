@@ -70,15 +70,15 @@
       </el-table-column>
 
       <!-- <el-table-column label="Author" width="110" align="center">
-        <template slot-scope="scope">
-          <span>{{ scope.row.author }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column label="Pageviews" width="110" align="center">
-        <template slot-scope="scope">
-          {{ scope.row.pageviews }}
-        </template>
-      </el-table-column> -->
+          <template slot-scope="scope">
+            <span>{{ scope.row.author }}</span>
+          </template>
+        </el-table-column>
+        <el-table-column label="Pageviews" width="110" align="center">
+          <template slot-scope="scope">
+            {{ scope.row.pageviews }}
+          </template>
+        </el-table-column> -->
 
       <el-table-column
         class-name="status-col"
@@ -136,11 +136,11 @@
             修改
           </el-button>
           <!-- <el-button v-if="row.status!='published'" size="mini" type="success" @click="handleModifyStatus(row,'published')">
-            发布
-          </el-button> -->
+              发布
+            </el-button> -->
           <!-- <el-button v-if="row.status!='draft'" size="mini" @click="handleModifyStatus(row,'draft')">
-            草稿
-          </el-button> -->
+              草稿
+            </el-button> -->
           <el-button
             v-if="row.deleteStatus != 1"
             size="mini"
@@ -162,7 +162,7 @@
     </el-table>
 
     <!-- 分页 -->
-    <Pagination
+    <pagination
       v-show="total > 0"
       :total="total"
       :page.sync="listQuery.current"
@@ -178,17 +178,11 @@ import { getFullImgUrl } from "@/utils/index";
 import FilenameOption from "./components/FilenameOption";
 import AutoWidthOption from "./components/AutoWidthOption";
 import BookTypeOption from "./components/BookTypeOption";
-// import { Pagination } from "@/components/Pagination/index.vue";递归组件需要内部调用：
+import { Pagination } from "@/components/Pagination";
 import waves from "@/directive/waves"; // waves directive
 
 export default {
-  // name: "Pagination",
-  components: {
-    FilenameOption,
-    AutoWidthOption,
-    BookTypeOption,
-    Pagination: () => import("@/components/Pagination/index.vue"),
-  },
+  components: { FilenameOption, AutoWidthOption, BookTypeOption, Pagination },
   directives: { waves },
   filters: {
     statusFilter(status) {
@@ -210,7 +204,7 @@ export default {
       total: 0,
       listQuery: {
         current: 1,
-        size: 10,
+        size: 5,
       },
     };
   },

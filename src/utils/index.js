@@ -113,3 +113,7 @@ export function param2Obj(url) {
   });
   return obj;
 }
+
+export function getFullImgUrl(url) {
+  return "http://localhost:9091" + url;
+}
