@@ -65,35 +65,36 @@ router.beforeEach(async (to, from, next) => {
     } else {
       const hasGetUserInfo = store.getters.name;
       // const hasGetUserInfo = "jing";
-      if (hasGetUserInfo) {
-        next();
-      } else {
-        try {
-          // get user info
-          await store.dispatch("user/getInfo");
-          // Message.warning(warning || "user info warning");
-          next();
-        } catch (error) {
-          // remove token and go to login page to re-login
-          //   await store.dispatch("user/resetToken");
-          Message.error(" get user info has Error");
-          next(`/login?redirect=${to.path}`);
-          NProgress.done();
-        }
-      }
+      // if (hasGetUserInfo) {
+      next();
+      // } else {
+      // try {
+      // get user info
+
+      // await store.dispatch("user/getInfo", hasToken);
+      // Message.warning(warning || "user info warning");
+      // next();
+      // } catch (error) {
+      // remove token and go to login page to re-login
+      //   await store.dispatch("user/resetToken");
+      // Message.error(" get user info has Error");
+      // next(`/login?redirect=${to.path}`);
+      // NProgress.done();
+      // }
+      // }
     }
   } else {
     /* has no token*/
 
-    // if (whiteList.indexOf(to.path) !== -1) {
-    // in the free login whitelist, go directly
-    next();
-    // } else {
-    //   // other pages that do not have permission to access are redirected to the login page.
-    Message.error("token失效，请重新登录！");
-    //   next(`/login?redirect=${to.path}`);
-    NProgress.done();
-    // }
+    if (whiteList.indexOf(to.path) !== -1) {
+      // in the free login whitelist, go directly
+      next();
+    } else {
+      //   // other pages that do not have permission to access are redirected to the login page.
+      Message.error("token失效，请重新登录！");
+      next(`/login?redirect=${to.path}`);
+      NProgress.done();
+    }
   }
 });
 
